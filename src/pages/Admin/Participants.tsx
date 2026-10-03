@@ -52,7 +52,7 @@ export default function AdminParticipants() {
               className="h-9 w-56 pl-9 text-sm"
             />
           </label>
-          <Select aria-label="Filter by college" className="h-9 w-auto py-1 text-xs" value={college} onChange={(event) => setCollege(event.target.value)}>
+          <Select aria-label="Filter by college" className="h-9 py-1 text-xs" style={{ width: 'auto' }} value={college} onChange={(event) => setCollege(event.target.value)}>
             <option value="all">All colleges</option>
             {COLLEGES.map((item) => (
               <option key={item} value={item}>

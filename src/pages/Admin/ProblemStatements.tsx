@@ -154,7 +154,7 @@ export default function AdminProblemStatements() {
         <div className="flex flex-wrap items-center gap-2">
           <Select
             aria-label="Filter by project"
-            className="h-9 w-auto py-1 text-xs"
+            className="h-9 py-1 text-xs" style={{ width: 'auto' }}
             value={projectFilter}
             onChange={(event) => setProjectFilter(event.target.value)}
           >

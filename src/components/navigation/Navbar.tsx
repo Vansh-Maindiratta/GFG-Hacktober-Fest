@@ -54,7 +54,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
       )}
     >
       {/* Floating nav container */}
-      <div className="mx-auto mt-3 flex h-14 max-w-7xl items-center gap-3 rounded-xl px-4 sm:px-5"
+      <div className="mx-auto mt-3 flex h-16 max-w-[1560px] items-center gap-3 rounded-2xl px-4 sm:px-5"
         style={{
           background: scrolled
             ? 'rgba(10,20,31,0.92)'
@@ -74,7 +74,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
               end={item.to === '/'}
               className={({ isActive }) =>
                 cn(
-                  'relative px-3 py-2 text-[13px] font-medium transition-colors',
+                  'relative px-3.5 py-2 text-sm font-medium transition-colors',
                   isActive
                     ? 'text-[#2EE59D]'
                     : 'text-[#9FB0C3] hover:text-white',
@@ -88,8 +88,8 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
                     <motion.span
                       layoutId="nav-active"
                       aria-hidden
-                      className="absolute inset-x-3 -bottom-0.5 h-px"
-                      style={{ background: '#2EE59D' }}
+                      className="absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full"
+                      style={{ background: '#2EE59D', boxShadow: '0 0 8px rgba(46,229,157,0.7)' }}
                     />
                   ) : null}
                 </>
@@ -103,7 +103,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
           <button
             type="button"
             onClick={onSearchOpen}
-            className="hidden h-8 items-center gap-2 rounded-lg px-3 text-sm transition hover:text-white md:flex"
+            className="hidden h-9 items-center gap-2 rounded-lg px-3 text-sm transition hover:text-white md:flex"
             style={{
               background: 'rgba(13,27,38,0.7)',
               border: '1px solid rgba(45,212,191,0.15)',
@@ -131,7 +131,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub organization"
-            className="grid size-8 place-items-center rounded-lg transition hover:text-[#2EE59D]"
+            className="grid size-9 place-items-center rounded-lg transition hover:text-[#2EE59D]"
             style={{
               border: '1px solid rgba(45,212,191,0.2)',
               background: 'rgba(13,27,38,0.5)',
@@ -145,7 +145,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
             <>
               <Link
                 to={role === 'admin' ? '/admin' : '/dashboard'}
-                className="hidden h-8 items-center gap-2 rounded-lg px-3.5 text-sm font-semibold transition sm:flex"
+                className="hidden h-9 items-center gap-2 rounded-lg px-4 text-sm font-semibold transition sm:flex"
                 style={{
                   background: '#2EE59D',
                   color: '#050B14',
@@ -210,13 +210,19 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
             <button
               type="button"
               onClick={() => navigate('/dashboard')}
-              className="hidden h-8 items-center gap-2 rounded-lg px-3.5 text-sm font-semibold transition sm:flex"
+              className="hidden items-center gap-2 rounded-lg px-4 text-sm font-semibold transition hover:bg-[#2EE59D] sm:flex"
               style={{
                 background: '#2EE59D',
                 color: '#050B14',
+                border: '1px solid rgba(45,212,191,0.25)',
               }}
             >
-              <User className="size-3.5" aria-hidden />
+              <span className="grid size-6 place-items-center rounded-md font-mono text-[10px] font-bold tabular"
+                style={{ background: 'rgba(5,11,20,0.75)', border: '1px solid rgba(45,212,191,0.2)', color: '#FFFFFF' }}
+                aria-label="My Progress"
+              >
+                MY
+              </span>
               My Progress
             </button>
           )}
@@ -228,7 +234,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            className="grid size-8 place-items-center rounded-lg transition xl:hidden"
+            className="grid size-9 place-items-center rounded-lg transition xl:hidden"
             style={{
               border: '1px solid rgba(45,212,191,0.2)',
               color: 'white',

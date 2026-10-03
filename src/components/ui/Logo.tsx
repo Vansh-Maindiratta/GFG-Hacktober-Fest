@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn'
  * Pixel-cat mascot mark — pure SVG, no external assets.
  * Matches the cat-head icon in the screenshot navbar.
  */
-export function LogoMark({ className, size = 36 }: { className?: string; size?: number }) {
+export function LogoMark({ className, size = 42 }: { className?: string; size?: number }) {
   return (
     <span
       className={cn(
@@ -59,7 +59,7 @@ export function Logo({ compact = false, className }: { compact?: boolean; classN
       <LogoMark />
       <span className="flex shrink-0 flex-col whitespace-nowrap leading-none">
         <span
-          className="text-[15px] font-extrabold tracking-tight text-white"
+          className="text-[19px] font-extrabold leading-none tracking-tight text-white"
           style={{ fontFamily: 'var(--font-pixel)' }}
         >
           <span className="text-white">GEEK</span>
@@ -67,8 +67,8 @@ export function Logo({ compact = false, className }: { compact?: boolean; classN
         </span>
         {!compact && (
           <span
-            className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.2em] transition-colors"
-            style={{ color: '#5A7083', letterSpacing: '0.15em' }}
+            className="mt-1 font-mono text-[9.5px] uppercase transition-colors"
+            style={{ color: '#7C90A6', letterSpacing: '0.14em' }}
           >
             GFG STUDENT CHAPTER RBU
           </span>

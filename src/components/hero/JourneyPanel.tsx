@@ -59,14 +59,14 @@ function InitialAvatar({ name, index }: { name: string; index: number }) {
   const textColors = ['#2EE59D', '#38BDF8', '#84CC16', '#FBBF24']
   return (
     <div
-      className="grid shrink-0 place-items-center rounded-full text-[9px] font-bold"
+      className="grid shrink-0 place-items-center rounded-full text-[10px] font-bold"
       style={{
-        width: 24,
-        height: 24,
+        width: 30,
+        height: 30,
         background: colors[index % 4],
-        border: '1.5px solid rgba(46,229,157,0.3)',
+        border: '1.5px solid rgba(46,229,157,0.35)',
         color: textColors[index % 4],
-        marginLeft: index === 0 ? 0 : -8,
+        marginLeft: index === 0 ? 0 : -10,
         zIndex: 10 - index,
         position: 'relative',
         fontFamily: 'Space Mono, monospace',
@@ -92,85 +92,83 @@ export function JourneyPanel() {
       transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       className="flex flex-col gap-0 overflow-hidden rounded-2xl"
       style={{
-        background: 'rgba(10,20,31,0.88)',
-        border: '1px solid rgba(45,212,191,0.2)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(8,17,27,0.96)',
+        border: '1px solid rgba(45,212,191,0.22)',
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 30px 70px -40px rgba(0,0,0,0.9)',
       }}
     >
       {/* Panel heading */}
       <div
-        className="px-5 py-3.5"
+        className="px-5 py-4"
         style={{ borderBottom: '1px solid rgba(45,212,191,0.12)' }}
       >
         <p
-          className="font-mono text-[11px] font-bold uppercase tracking-[0.22em]"
-          style={{ color: '#9FB0C3', letterSpacing: '0.2em' }}
+          className="font-mono text-[13px] font-bold uppercase"
+          style={{ color: '#C7D5E4', letterSpacing: '0.2em' }}
         >
           YOUR OPEN SOURCE JOURNEY
         </p>
       </div>
 
       {/* Timeline */}
-      <div className="relative px-4 py-3">
+      <div className="relative px-3 py-4">
         {/* Vertical line */}
         <div
-          className="absolute left-[29px] top-0 bottom-0"
-          style={{ width: '2px', background: 'linear-gradient(to bottom, #2EE59D 0%, rgba(46,229,157,0.1) 100%)' }}
+          className="absolute left-[22px] top-5 bottom-5"
+          style={{ width: '2px', background: 'linear-gradient(to bottom, #2EE59D 0%, rgba(46,229,157,0.18) 100%)' }}
           aria-hidden
         />
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2.5">
           {JOURNEY_STEPS.map((step, idx) => (
             <motion.div
               key={step.num}
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.3 + idx * 0.07 }}
-              className="relative flex items-center gap-3 journey-card px-3 py-2.5"
+              className="relative flex items-center gap-3"
             >
               {/* Timeline node */}
-              <div
-                className="relative z-10 grid shrink-0 place-items-center rounded-full"
-                style={{
-                  width: 18,
-                  height: 18,
-                  background: '#050B14',
-                  border: '2px solid #2EE59D',
-                  boxShadow: '0 0 6px rgba(46,229,157,0.4)',
-                }}
-                aria-hidden
-              >
-                <div
-                  className="rounded-full"
-                  style={{ width: 6, height: 6, background: '#2EE59D' }}
+              <div className="relative z-10 flex w-[22px] shrink-0 items-center justify-center self-stretch">
+                <span
+                  className="block size-4 rounded-full"
+                  style={{
+                    background: '#2EE59D',
+                    boxShadow: '0 0 0 3px #08111B, 0 0 8px rgba(46,229,157,0.55)',
+                  }}
+                  aria-hidden
                 />
               </div>
+
+              <div className="journey-card flex min-w-0 flex-1 items-center gap-3 px-3.5 py-3">
 
               {/* Icon */}
               <div
                 className="grid shrink-0 place-items-center rounded-lg"
                 style={{
-                  width: 30,
-                  height: 30,
-                  background: 'rgba(46,229,157,0.08)',
-                  border: '1px solid rgba(46,229,157,0.15)',
+                  width: 36,
+                  height: 36,
+                  background: 'rgba(46,229,157,0.09)',
+                  border: '1px solid rgba(46,229,157,0.18)',
                 }}
               >
                 <step.icon
-                  className="size-3.5"
+                  className="size-[18px]"
                   style={{ color: '#2EE59D' }}
                   aria-hidden
                 />
               </div>
 
               {/* Text */}
-              <div className="min-w-0">
-                <p className="text-[12px] font-semibold leading-tight text-white">
-                  {step.num}. {step.title}
-                </p>
-                <p className="mt-0.5 text-[10.5px] leading-tight" style={{ color: '#9FB0C3' }}>
-                  {step.sub}
-                </p>
+                <div className="min-w-0">
+                  <p className="text-[14.5px] font-semibold leading-tight text-white">
+                    {step.num}. {step.title}
+                  </p>
+                  <p className="mt-1 text-[12.5px] leading-tight" style={{ color: '#9FB0C3' }}>
+                    {step.sub}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -179,7 +177,7 @@ export function JourneyPanel() {
 
       {/* Stat tiles */}
       <div
-        className="grid grid-cols-4 gap-2 px-4 py-3"
+        className="grid grid-cols-4 gap-2.5 px-4 py-4"
         style={{ borderTop: '1px solid rgba(45,212,191,0.12)' }}
       >
         {EVENT_STATS.map((stat, idx) => {
@@ -190,17 +188,17 @@ export function JourneyPanel() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.6 + idx * 0.06 }}
-              className="stat-tile flex flex-col items-center gap-1 px-1 py-2.5 text-center"
+              className="stat-tile flex flex-col items-center gap-1.5 px-1.5 py-3.5 text-center"
             >
-              <Icon className="size-4" style={{ color: '#2EE59D' }} aria-hidden />
+              <Icon className="size-5" style={{ color: '#2EE59D' }} aria-hidden />
               <span
-                className="font-mono text-[13px] font-bold leading-none"
+                className="font-mono text-[19px] font-bold leading-none"
                 style={{ color: '#FFFFFF' }}
               >
                 {stat.value}{stat.suffix}
               </span>
               <span
-                className="font-mono text-[8.5px] uppercase leading-tight"
+                className="font-mono text-[10px] uppercase leading-[1.3]"
                 style={{ color: '#9FB0C3', letterSpacing: '0.06em' }}
               >
                 {stat.label}
@@ -215,18 +213,18 @@ export function JourneyPanel() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.85 }}
-        className="flex items-center justify-between px-4 py-3"
-        style={{ borderTop: '1px solid rgba(45,212,191,0.12)', background: 'rgba(46,229,157,0.04)' }}
+        className="flex items-center justify-between gap-3 px-4 py-3.5"
+        style={{ borderTop: '1px solid rgba(45,212,191,0.12)', background: 'rgba(46,229,157,0.05)' }}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2.5">
           {/* Overlapping avatars */}
-          <div className="flex items-center">
+          <div className="flex shrink-0 items-center">
             {MOCK_USERS.slice(0, 4).map((u, i) => (
               <InitialAvatar key={u.id} name={u.name} index={i} />
             ))}
           </div>
-          <GithubIcon className="size-3.5" style={{ color: '#9FB0C3' }} />
-          <p className="text-[11px] font-medium" style={{ color: '#9FB0C3' }}>
+          <GithubIcon className="size-4 shrink-0" style={{ color: '#9FB0C3' }} />
+          <p className="truncate text-[13px] font-medium" style={{ color: '#9FB0C3' }}>
             Join{' '}
             <span style={{ color: '#FFFFFF' }}>{participantCount}</span>{' '}
             developers contributing this month.
@@ -235,13 +233,13 @@ export function JourneyPanel() {
         <Link
           to="/leaderboard"
           aria-label="View leaderboard"
-          className="grid size-7 shrink-0 place-items-center rounded-full transition"
+          className="grid size-9 shrink-0 place-items-center rounded-full transition"
           style={{
             background: '#2EE59D',
             color: '#050B14',
           }}
         >
-          <ArrowRight className="size-3.5" />
+          <ArrowRight className="size-4" />
         </Link>
       </motion.div>
     </motion.div>

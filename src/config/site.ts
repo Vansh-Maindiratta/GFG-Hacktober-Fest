@@ -1,6 +1,9 @@
 /** Site-wide configuration. Values are data-driven so nothing is hardcoded in UI. */
 
 import type { EventStats } from '@/types'
+import { MOCK_PROJECTS } from '@/data/mock/projects'
+import { MOCK_ANALYTICS } from '@/data/mock/analytics'
+import { MOCK_BADGES } from '@/data/mock/badges'
 
 export interface NavItem {
   label: string
@@ -41,14 +44,41 @@ export const NAV_ITEMS: NavItem[] = [
 
 /**
  * Event statistics powering the landing page counters.
- * These represent real counts from the mock data layer.
+ * Derived from the existing data layer (registry + analytics + badges) so the
+ * numbers never drift from the rest of the app.
  * TODO: Replace with GET /stats from the backend.
  */
+const openIssueCount = MOCK_PROJECTS.reduce((sum, project) => sum + project.openIssues, 0)
+
 export const EVENT_STATS: EventStats[] = [
-  { id: 'repositories', label: 'Repositories', value: 12, suffix: '+', hint: 'curated repositories' },
-  { id: 'issues', label: 'Open Issues', value: 450, suffix: '+', hint: 'ready to be solved' },
-  { id: 'participants', label: 'Participants', value: 800, suffix: '+', hint: 'registered developers' },
-  { id: 'badges', label: 'Achievement Badges', value: 50, suffix: '+', hint: 'unlock with contributions' },
+  {
+    id: 'repositories',
+    label: 'Repositories',
+    value: MOCK_PROJECTS.length,
+    suffix: '+',
+    hint: 'curated repositories',
+  },
+  {
+    id: 'issues',
+    label: 'Open Issues',
+    value: openIssueCount,
+    suffix: '+',
+    hint: 'ready to be solved',
+  },
+  {
+    id: 'participants',
+    label: 'Participants',
+    value: MOCK_ANALYTICS.totalParticipants,
+    suffix: '+',
+    hint: 'registered developers',
+  },
+  {
+    id: 'badges',
+    label: 'Achievement Badges',
+    value: MOCK_BADGES.length,
+    suffix: '+',
+    hint: 'unlock with contributions',
+  },
 ]
 
 export const LEVEL_THRESHOLDS = [

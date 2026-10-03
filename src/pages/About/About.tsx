@@ -46,7 +46,7 @@ export default function About() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-line bg-pitch/60 py-14 sm:py-16">
+      <section className="relative overflow-hidden border-b border-line bg-pitch/60 pt-12 pb-0 sm:pt-14">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden />
         <Container className="relative">
           <SectionHeading

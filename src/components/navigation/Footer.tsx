@@ -15,7 +15,7 @@ const COMMUNITY = [
 export function Footer() {
   return (
     <footer
-      className="relative mt-24"
+      className="relative mt-14"
       style={{
         background: '#050B14',
         borderTop: '1px solid rgba(45,212,191,0.12)',

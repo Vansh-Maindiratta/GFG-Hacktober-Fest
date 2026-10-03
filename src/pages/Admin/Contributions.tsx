@@ -53,7 +53,7 @@ export default function AdminContributions() {
           <SegmentedControl ariaLabel="Filter by status" items={STATUSES} value={status} onChange={setStatus} />
           <Select
             aria-label="Filter by project"
-            className="h-9 w-auto py-1 text-xs"
+            className="h-9 py-1 text-xs" style={{ width: 'auto' }}
             value={projectId}
             onChange={(event) => setProjectId(event.target.value)}
           >

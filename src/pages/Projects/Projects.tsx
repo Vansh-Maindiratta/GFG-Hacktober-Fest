@@ -105,7 +105,7 @@ export default function Projects() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-line bg-pitch/60 py-14 sm:py-16">
+      <section className="relative overflow-hidden border-b border-line bg-pitch/60 pt-12 pb-0 sm:pt-14">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden />
         <Container className="relative">
           <SectionHeading
@@ -168,7 +168,7 @@ export default function Projects() {
             <SlidersHorizontal className="size-3.5 text-dim" aria-hidden />
             <Select
               aria-label="Contribution type"
-              className="h-9 w-auto py-1 text-xs"
+              className="h-9 py-1 text-xs" style={{ width: 'auto' }}
               value={filters.contributionType}
               onChange={(event) => update({ contributionType: event.target.value as ContributionType | 'all' })}
             >
@@ -181,7 +181,7 @@ export default function Projects() {
 
             <Select
               aria-label="Availability"
-              className="h-9 w-auto py-1 text-xs"
+              className="h-9 py-1 text-xs" style={{ width: 'auto' }}
               value={filters.availability}
               onChange={(event) => update({ availability: event.target.value as 'all' | 'slots' })}
             >
@@ -191,7 +191,7 @@ export default function Projects() {
 
             <Select
               aria-label="Sort"
-              className="h-9 w-auto py-1 text-xs"
+              className="h-9 py-1 text-xs" style={{ width: 'auto' }}
               value={filters.sort}
               onChange={(event) => update({ sort: event.target.value as SortId })}
             >

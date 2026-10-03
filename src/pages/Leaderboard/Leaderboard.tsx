@@ -67,7 +67,7 @@ export default function Leaderboard() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-line bg-pitch/60 py-14 sm:py-16">
+      <section className="relative overflow-hidden border-b border-line bg-pitch/60 pt-12 pb-0 sm:pt-14">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden />
         <Container className="relative">
           <SectionHeading
@@ -95,7 +95,7 @@ export default function Leaderboard() {
             {scope === 'project' ? (
               <Select
                 aria-label="Project"
-                className="h-9 w-auto py-1 text-xs"
+                className="h-9 py-1 text-xs" style={{ width: 'auto' }}
                 value={projectId}
                 onChange={(event) => setProjectId(event.target.value)}
               >
@@ -123,7 +123,7 @@ export default function Leaderboard() {
 
             <Select
               aria-label="College"
-              className="h-9 w-auto py-1 text-xs"
+              className="h-9 py-1 text-xs" style={{ width: 'auto' }}
               value={college}
               onChange={(event) => setCollege(event.target.value)}
             >
@@ -137,7 +137,7 @@ export default function Leaderboard() {
 
             <Select
               aria-label="Contribution type"
-              className="h-9 w-auto py-1 text-xs"
+              className="h-9 py-1 text-xs" style={{ width: 'auto' }}
               value={contributionType}
               onChange={(event) => setContributionType(event.target.value as ContributionType | 'all')}
             >
