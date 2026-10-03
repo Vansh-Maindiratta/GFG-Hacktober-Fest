@@ -14,15 +14,19 @@ export function Hero() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ minHeight: 'calc(100vh - 80px)' }}
+      style={{ minHeight: '100svh', minHeight: '100vh' }}
     >
-      {/* Pixel-art scene background */}
+      {/* z-0: Pixel-art scene background (full-bleed, extends behind navbar intentionally) */}
       <PixelScene />
 
-      {/* Content layer matching the 1560px centered navbar container */}
+      {/* z-10: Content layer — pushed below the floating navbar via --content-top */}
       <div
-        className="relative mx-auto flex w-[92%] max-w-[1560px] flex-col gap-8 pb-12 pt-14 lg:flex-row lg:items-start lg:justify-between lg:gap-10"
-        style={{ zIndex: 1 }}
+        className="relative mx-auto flex w-[92%] max-w-[1560px] flex-col gap-8 pb-12 lg:flex-row lg:items-start lg:justify-between lg:gap-10"
+        style={{
+          zIndex: 10,
+          paddingTop: 'var(--content-top)',
+          paddingBottom: '48px',
+        }}
       >
         {/* ── Left column: copy (max-w 600px) ── */}
         <div className="flex max-w-[600px] flex-col justify-center">
@@ -55,10 +59,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 font-pixel tracking-[-0.01em] uppercase"
+            className="mt-4 font-pixel tracking-[-0.01em] uppercase"
             style={{
               fontFamily: 'var(--font-pixel)',
-              fontSize: 'clamp(2.5rem, 4.1vw, 5rem)',
+              fontSize: 'clamp(2.25rem, 3.6vw, 4rem)',
               lineHeight: 1.0,
             }}
           >
@@ -72,7 +76,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18 }}
-            className="mt-5 text-base sm:text-lg font-semibold leading-snug"
+            className="mt-4 text-base sm:text-lg font-semibold leading-snug"
             style={{ color: '#2EE59D', maxWidth: '30rem' }}
           >
             {SITE_CONFIG.motto}
@@ -83,8 +87,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.26 }}
-            className="mt-3 text-[14px] sm:text-[15px] leading-relaxed"
-            style={{ color: '#9FB0C3', maxWidth: '30rem' }}
+            className="mt-2.5 text-[15px] sm:text-[17px] leading-relaxed"
+            style={{ color: '#9FB0C3', maxWidth: '36rem' }}
           >
             Explore real repositories, fix issues, ship features, improve documentation —
             every merged pull request earns XP and moves you up the leaderboard.
@@ -95,7 +99,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.34 }}
-            className="mt-6 flex flex-wrap items-center gap-3"
+            className="mt-5 flex flex-wrap items-center gap-3"
           >
             {/* Primary: Explore Projects */}
             <a

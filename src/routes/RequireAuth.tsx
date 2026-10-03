@@ -28,7 +28,14 @@ export function RequireAuth({
 
   if (!authorized) {
     return (
-      <div className="relative flex min-h-[calc(100vh-80px)] w-full items-center overflow-hidden bg-[#050B14] py-8 px-4 sm:px-6">
+      <div
+        className="relative flex w-full items-center overflow-hidden bg-[#050B14] px-4 sm:px-6"
+        style={{
+          minHeight: '100svh',
+          paddingTop: 'calc(var(--nav-offset) + 32px)',
+          paddingBottom: '40px',
+        }}
+      >
         {/* ── Background Artwork: ~115% scale anchored object-[25%_100%] ── */}
         <picture className="pointer-events-none absolute inset-0 block h-full w-full select-none">
           <source media="(max-width: 1280px)" srcSet="/hero-bg-mobile.webp" />
