@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ minHeight: '100svh', minHeight: '100vh' }}
+      style={{ minHeight: '100svh' }}
     >
       {/* z-0: Pixel-art scene background (full-bleed, extends behind navbar intentionally) */}
       <PixelScene />
