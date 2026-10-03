@@ -3,38 +3,47 @@ import { SITE_CONFIG } from '@/config/site'
 import { cn } from '@/utils/cn'
 
 /**
- * Brand mark: a git-branch glyph inside a rounded technical plate.
- * Pure SVG — no external logo assets required.
+ * Pixel-cat mascot mark — pure SVG, no external assets.
+ * Matches the cat-head icon in the screenshot navbar.
  */
 export function LogoMark({ className, size = 36 }: { className?: string; size?: number }) {
   return (
     <span
       className={cn(
-        'relative grid shrink-0 place-items-center rounded-[10px] border border-brand/40 bg-gradient-to-br from-brand/25 to-brand/[0.06]',
+        'relative grid shrink-0 place-items-center rounded-[10px] border bg-[#0A141F]',
         className,
       )}
-      style={{ width: size, height: size }}
+      style={{
+        width: size,
+        height: size,
+        borderColor: 'rgba(46,229,157,0.3)',
+      }}
     >
-      <svg viewBox="0 0 24 24" width={size * 0.6} height={size * 0.6} aria-hidden focusable="false">
-        <path
-          d="M7 5.5v13"
-          stroke="#22C55E"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path
-          d="M17 7.5c0 4-4 3.5-6 5.5"
-          stroke="#86EFAC"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path d="M17 7.5v9" stroke="#2F8D46" strokeWidth="1.7" strokeLinecap="round" fill="none" />
-        <circle cx="7" cy="4" r="2.4" fill="#050805" stroke="#22C55E" strokeWidth="1.7" />
-        <circle cx="7" cy="20" r="2.4" fill="#050805" stroke="#2F8D46" strokeWidth="1.7" />
-        <circle cx="17" cy="6" r="2.4" fill="#050805" stroke="#86EFAC" strokeWidth="1.7" />
-        <circle cx="17" cy="18" r="2.4" fill="#050805" stroke="#22C55E" strokeWidth="1.7" />
+      {/* Pixel cat face SVG */}
+      <svg
+        viewBox="0 0 24 24"
+        width={size * 0.72}
+        height={size * 0.72}
+        aria-hidden
+        focusable="false"
+        style={{ imageRendering: 'pixelated' }}
+      >
+        {/* Cat head outline */}
+        <rect x="4" y="6" width="16" height="13" rx="2" fill="none" stroke="#2EE59D" strokeWidth="1.5" />
+        {/* Left ear */}
+        <polygon points="5,6 5,2 9,6" fill="#2EE59D" />
+        {/* Right ear */}
+        <polygon points="19,6 19,2 15,6" fill="#2EE59D" />
+        {/* Left eye */}
+        <rect x="7" y="10" width="3" height="3" rx="0.5" fill="#2EE59D" />
+        {/* Right eye */}
+        <rect x="14" y="10" width="3" height="3" rx="0.5" fill="#2EE59D" />
+        {/* Nose */}
+        <rect x="11" y="14" width="2" height="1" fill="#2EE59D" />
+        {/* Mouth left */}
+        <rect x="9" y="15" width="2" height="1" fill="#2EE59D" opacity="0.7" />
+        {/* Mouth right */}
+        <rect x="13" y="15" width="2" height="1" fill="#2EE59D" opacity="0.7" />
       </svg>
     </span>
   )
@@ -44,18 +53,26 @@ export function Logo({ compact = false, className }: { compact?: boolean; classN
   return (
     <Link
       to="/"
-      className={cn('group flex shrink-0 items-center gap-3', className)}
+      className={cn('group flex shrink-0 items-center gap-2.5', className)}
       aria-label={`${SITE_CONFIG.name} home`}
     >
       <LogoMark />
       <span className="flex shrink-0 flex-col whitespace-nowrap leading-none">
-        <span className="text-[15px] font-extrabold tracking-tight text-ink">
-          GFG <span className="text-brand-bright">HACKTOBER</span>
-          {!compact ? <span className="text-ink"> FEST</span> : null}
+        <span
+          className="text-[15px] font-extrabold tracking-tight text-white"
+          style={{ fontFamily: 'var(--font-pixel)' }}
+        >
+          <span className="text-white">GEEK</span>
+          <span style={{ color: '#2EE59D' }}>STOBER</span>
         </span>
-        <span className="mt-1 font-mono text-[9.5px] uppercase tracking-[0.34em] text-dim group-hover:text-mint/70 transition-colors">
-          Open Source League
-        </span>
+        {!compact && (
+          <span
+            className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.2em] transition-colors"
+            style={{ color: '#5A7083', letterSpacing: '0.15em' }}
+          >
+            GFG STUDENT CHAPTER RBU
+          </span>
+        )}
       </span>
     </Link>
   )

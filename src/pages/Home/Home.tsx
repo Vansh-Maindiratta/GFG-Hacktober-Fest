@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <p className="sr-only">
-        GFG Hacktober Fest — an open-source contribution competition where merged pull requests earn XP
+        GEEKSTOBER — GFG Student Chapter RBU open-source contribution competition where merged pull requests earn XP
       </p>
       <Hero />
       <EventStats />
