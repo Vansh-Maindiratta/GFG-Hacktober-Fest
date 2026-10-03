@@ -12,16 +12,18 @@ import { ScrollToTop } from '@/components/layout/ScrollToTop'
 export function AppLayout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation()
-  const isHome = location.pathname === '/'
+
+  /** Pages that manage their own top spacing (hero or full-viewport card). */
+  const selfPaddedRoutes = ['/', '/dashboard', '/progress']
+  const selfPadded = selfPaddedRoutes.includes(location.pathname) || location.pathname.startsWith('/admin')
 
   return (
     <div className="flex min-h-screen flex-col" style={{ background: '#050B14' }}>
       <ScrollToTop />
       <Navbar onSearchOpen={() => setSearchOpen(true)} />
 
-      {/* On the home page, hero manages its own top padding (full-viewport scene).
-          On other pages, add padding-top to clear the floating navbar. */}
-      <main id="main" className={`flex-1 ${isHome ? '' : 'pt-20'}`}>
+      {/* Non-self-padded pages get padding-top to clear the fixed floating navbar. */}
+      <main id="main" className="flex-1" style={selfPadded ? {} : { paddingTop: 'var(--content-top)' }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

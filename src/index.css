@@ -99,6 +99,13 @@
 @layer base {
   :root {
     color-scheme: dark;
+    /* Navbar geometry — navbar sits mt-3 (12px) from viewport top, h-14 (56px) tall */
+    --nav-top: 12px;
+    --nav-h: 56px;
+    /* Total vertical space the floating navbar occupies */
+    --nav-offset: calc(var(--nav-top) + var(--nav-h));
+    /* How far page content should be pushed down (navbar + breathing room) */
+    --content-top: calc(var(--nav-offset) + 32px);
   }
 
   * {
