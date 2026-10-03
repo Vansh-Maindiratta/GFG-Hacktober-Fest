@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Panel'
 import { TerminalWindow } from '@/components/github/TerminalWindow'
 
 const LINES = [
-  { kind: 'command', text: 'gfg open unknown-route' },
+  { kind: 'command', text: 'geekstober open unknown-route' },
   { kind: 'output', text: 'fatal: route not found' },
   { kind: 'accent', text: 'hint: check /projects or /leaderboard' },
 ] as const
@@ -16,8 +16,8 @@ export default function NotFound() {
   return (
     <Container className="py-24 text-center">
       <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-dim">error 404</p>
-      <h1 className="mt-4 text-5xl font-extrabold tracking-tight text-ink sm:text-6xl">
-        This branch doesn&apos;t exist
+      <h1 className="mt-4 font-pixel text-2xl sm:text-3xl lg:text-4xl text-ink">
+        THIS BRANCH DOESN&apos;T EXIST
       </h1>
       <p className="mx-auto mt-4 max-w-xl text-base text-muted">
         The page you asked for was never merged. Head back to the registry and pick a repository that is.
