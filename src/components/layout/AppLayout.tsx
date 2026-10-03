@@ -12,13 +12,16 @@ import { ScrollToTop } from '@/components/layout/ScrollToTop'
 export function AppLayout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation()
+  const isHome = location.pathname === '/'
 
   return (
-    <div className="flex min-h-screen flex-col bg-void">
+    <div className="flex min-h-screen flex-col" style={{ background: '#050B14' }}>
       <ScrollToTop />
       <Navbar onSearchOpen={() => setSearchOpen(true)} />
 
-      <main id="main" className="flex-1 pt-16">
+      {/* On the home page, hero manages its own top padding (full-viewport scene).
+          On other pages, add padding-top to clear the floating navbar. */}
+      <main id="main" className={`flex-1 ${isHome ? '' : 'pt-20'}`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -42,10 +45,10 @@ export function AppLayout() {
         position="bottom-right"
         toastOptions={{
           style: {
-            background: '#0b0f0b',
-            border: '1px solid #1c261c',
-            color: '#f5f7f5',
-            fontFamily: 'JetBrains Mono, monospace',
+            background: '#0A141F',
+            border: '1px solid rgba(45,212,191,0.2)',
+            color: '#FFFFFF',
+            fontFamily: 'Space Mono, monospace',
             fontSize: '13px',
           },
         }}

@@ -11,17 +11,19 @@ export interface NavItem {
 }
 
 export const SITE_CONFIG = {
-  name: 'GFG Hacktober Fest',
-  shortName: 'GFG HBF',
+  name: 'GEEKSTOBER',
+  fullName: 'GEEKSTOBER',
+  chapter: 'GFG STUDENT CHAPTER RBU',
+  shortName: 'GEEKSTOBER',
   tagline: 'Code. Contribute. Compete.',
   description:
     'An open-source contribution competition where developers build, fix, contribute and compete.',
   motto: 'Turn open-source contributions into achievements.',
-  githubUrl: 'https://github.com/gfg-hacktober-fest',
+  githubUrl: 'https://github.com/Vansh-Maindiratta/GFG-Hacktober-Fest',
   discordUrl: 'https://discord.gg/gfg-hacktober-fest',
   instagramUrl: 'https://instagram.com/gfg.hacktoberfest',
   linkedinUrl: 'https://linkedin.com/company/gfg-hacktober-fest',
-  email: 'hacktoberfest@gfg.club.edu',
+  email: 'geekstober@gfg.club.edu',
   venue: 'Open Source • Online + Campus Finals',
   dates: 'Oct 01 — Oct 31',
   edition: '2026 Edition',
@@ -39,13 +41,14 @@ export const NAV_ITEMS: NavItem[] = [
 
 /**
  * Event statistics powering the landing page counters.
+ * These represent real counts from the mock data layer.
  * TODO: Replace with GET /stats from the backend.
  */
 export const EVENT_STATS: EventStats[] = [
-  { id: 'projects', label: 'Projects', value: 12, suffix: '+', hint: 'curated repositories' },
-  { id: 'participants', label: 'Participants', value: 250, suffix: '+', hint: 'registered developers' },
-  { id: 'issues', label: 'Open Issues', value: 500, suffix: '+', hint: 'ready to be solved' },
-  { id: 'contributions', label: 'Potential Contributions', value: 1000, suffix: '+', hint: 'XP opportunities' },
+  { id: 'repositories', label: 'Repositories', value: 12, suffix: '+', hint: 'curated repositories' },
+  { id: 'issues', label: 'Open Issues', value: 450, suffix: '+', hint: 'ready to be solved' },
+  { id: 'participants', label: 'Participants', value: 800, suffix: '+', hint: 'registered developers' },
+  { id: 'badges', label: 'Achievement Badges', value: 50, suffix: '+', hint: 'unlock with contributions' },
 ]
 
 export const LEVEL_THRESHOLDS = [
