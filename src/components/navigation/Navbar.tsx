@@ -54,7 +54,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
       )}
     >
       {/* Floating nav container */}
-      <div className="mx-auto mt-3 flex h-14 max-w-7xl items-center gap-3 rounded-xl px-4 sm:px-5"
+      <div className="mx-auto mt-3 flex h-14 w-[92%] max-w-[1560px] items-center gap-3 rounded-xl px-4 sm:px-5"
         style={{
           background: scrolled
             ? 'rgba(10,20,31,0.92)'
@@ -74,7 +74,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
               end={item.to === '/'}
               className={({ isActive }) =>
                 cn(
-                  'relative px-3 py-2 text-[13px] font-medium transition-colors',
+                  'relative px-3 py-2 text-[13px] font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[#2EE59D]/50 focus-visible:rounded-md',
                   isActive
                     ? 'text-[#2EE59D]'
                     : 'text-[#9FB0C3] hover:text-white',

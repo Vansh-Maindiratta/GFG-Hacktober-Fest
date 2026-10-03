@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion'
-import { BarChart3, BookOpen, GitMerge, MousePointer2, Code2, Trophy } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import {
+  AlertCircle,
+  ArrowRight,
+  Award,
+  BarChart3,
+  BookOpen,
+  Code2,
+  FolderGit2,
+  GitMerge,
+  MousePointer2,
+  Trophy,
+  Users,
+} from 'lucide-react'
 import { GithubIcon } from '@/components/ui/BrandIcons'
 import { MOCK_USERS } from '@/data/mock/users'
 import { EVENT_STATS } from '@/config/site'
-import { Link } from 'react-router-dom'
-import { ArrowRight, FolderGit2, AlertCircle, Users, Award } from 'lucide-react'
 
 const JOURNEY_STEPS = [
   {
@@ -59,17 +70,13 @@ function InitialAvatar({ name, index }: { name: string; index: number }) {
   const textColors = ['#2EE59D', '#38BDF8', '#84CC16', '#FBBF24']
   return (
     <div
-      className="grid shrink-0 place-items-center rounded-full text-[9px] font-bold"
+      className="relative z-[10] grid size-6 shrink-0 place-items-center rounded-full font-mono text-[9px] font-bold"
       style={{
-        width: 24,
-        height: 24,
         background: colors[index % 4],
         border: '1.5px solid rgba(46,229,157,0.3)',
         color: textColors[index % 4],
         marginLeft: index === 0 ? 0 : -8,
         zIndex: 10 - index,
-        position: 'relative',
-        fontFamily: 'Space Mono, monospace',
       }}
     >
       {initials}
@@ -79,19 +86,23 @@ function InitialAvatar({ name, index }: { name: string; index: number }) {
 
 /**
  * "Your Open Source Journey" right panel.
- * Timeline of 6 steps + stat tiles + participant strip.
- * All values come from the existing data layer.
+ * Uses vh-aware clamp sizing to fit cleanly within 768px viewports.
+ * Stat tiles & participant strip display real values from the data layer.
  */
 export function JourneyPanel() {
-  const participantCount = MOCK_USERS.length
+  const participantStat = EVENT_STATS.find((s) => s.id === 'participants')
+  const participantCountStr = participantStat
+    ? `${participantStat.value}${participantStat.suffix}`
+    : `${MOCK_USERS.length}+`
 
   return (
     <motion.div
       initial={{ opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col gap-0 overflow-hidden rounded-2xl"
+      className="flex flex-col overflow-hidden rounded-2xl"
       style={{
+        width: 'clamp(440px, 28vw, 520px)',
         background: 'rgba(10,20,31,0.88)',
         border: '1px solid rgba(45,212,191,0.2)',
         backdropFilter: 'blur(12px)',
@@ -99,22 +110,22 @@ export function JourneyPanel() {
     >
       {/* Panel heading */}
       <div
-        className="px-5 py-3.5"
+        className="px-4 py-2.5 sm:px-5 sm:py-3"
         style={{ borderBottom: '1px solid rgba(45,212,191,0.12)' }}
       >
         <p
-          className="font-mono text-[11px] font-bold uppercase tracking-[0.22em]"
-          style={{ color: '#9FB0C3', letterSpacing: '0.2em' }}
+          className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em]"
+          style={{ color: '#9FB0C3' }}
         >
           YOUR OPEN SOURCE JOURNEY
         </p>
       </div>
 
       {/* Timeline */}
-      <div className="relative px-4 py-3">
+      <div className="relative px-3.5 py-2.5 sm:px-4 sm:py-3">
         {/* Vertical line */}
         <div
-          className="absolute left-[29px] top-0 bottom-0"
+          className="absolute bottom-0 left-[27px] top-0 sm:left-[29px]"
           style={{ width: '2px', background: 'linear-gradient(to bottom, #2EE59D 0%, rgba(46,229,157,0.1) 100%)' }}
           aria-hidden
         />
@@ -126,14 +137,12 @@ export function JourneyPanel() {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.3 + idx * 0.07 }}
-              className="relative flex items-center gap-3 journey-card px-3 py-2.5"
+              className="journey-card relative flex h-[clamp(50px,6.2vh,58px)] items-center gap-3 px-3 py-1.5"
             >
               {/* Timeline node */}
               <div
-                className="relative z-10 grid shrink-0 place-items-center rounded-full"
+                className="relative z-10 grid size-4 shrink-0 place-items-center rounded-full"
                 style={{
-                  width: 18,
-                  height: 18,
                   background: '#050B14',
                   border: '2px solid #2EE59D',
                   boxShadow: '0 0 6px rgba(46,229,157,0.4)',
@@ -141,17 +150,15 @@ export function JourneyPanel() {
                 aria-hidden
               >
                 <div
-                  className="rounded-full"
-                  style={{ width: 6, height: 6, background: '#2EE59D' }}
+                  className="size-1.5 rounded-full"
+                  style={{ background: '#2EE59D' }}
                 />
               </div>
 
               {/* Icon */}
               <div
-                className="grid shrink-0 place-items-center rounded-lg"
+                className="grid size-7 shrink-0 place-items-center rounded-lg sm:size-8"
                 style={{
-                  width: 30,
-                  height: 30,
                   background: 'rgba(46,229,157,0.08)',
                   border: '1px solid rgba(46,229,157,0.15)',
                 }}
@@ -165,10 +172,10 @@ export function JourneyPanel() {
 
               {/* Text */}
               <div className="min-w-0">
-                <p className="text-[12px] font-semibold leading-tight text-white">
+                <p className="text-[12px] font-semibold leading-tight text-white sm:text-[13px]">
                   {step.num}. {step.title}
                 </p>
-                <p className="mt-0.5 text-[10.5px] leading-tight" style={{ color: '#9FB0C3' }}>
+                <p className="mt-0.5 truncate text-[10px] leading-tight sm:text-[10.5px]" style={{ color: '#9FB0C3' }}>
                   {step.sub}
                 </p>
               </div>
@@ -177,9 +184,9 @@ export function JourneyPanel() {
         </div>
       </div>
 
-      {/* Stat tiles */}
+      {/* Stat tiles (using real values from EVENT_STATS) */}
       <div
-        className="grid grid-cols-4 gap-2 px-4 py-3"
+        className="grid grid-cols-4 gap-1.5 px-3.5 py-2.5 sm:px-4"
         style={{ borderTop: '1px solid rgba(45,212,191,0.12)' }}
       >
         {EVENT_STATS.map((stat, idx) => {
@@ -190,18 +197,18 @@ export function JourneyPanel() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.6 + idx * 0.06 }}
-              className="stat-tile flex flex-col items-center gap-1 px-1 py-2.5 text-center"
+              className="stat-tile flex flex-col items-center gap-1 px-1 py-2 text-center"
             >
-              <Icon className="size-4" style={{ color: '#2EE59D' }} aria-hidden />
+              <Icon className="size-3.5" style={{ color: '#2EE59D' }} aria-hidden />
               <span
-                className="font-mono text-[13px] font-bold leading-none"
+                className="font-mono text-[12.5px] font-bold leading-none sm:text-[13px]"
                 style={{ color: '#FFFFFF' }}
               >
                 {stat.value}{stat.suffix}
               </span>
               <span
-                className="font-mono text-[8.5px] uppercase leading-tight"
-                style={{ color: '#9FB0C3', letterSpacing: '0.06em' }}
+                className="font-mono text-[8px] uppercase leading-tight sm:text-[8.5px]"
+                style={{ color: '#9FB0C3', letterSpacing: '0.05em' }}
               >
                 {stat.label}
               </span>
@@ -215,7 +222,7 @@ export function JourneyPanel() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.85 }}
-        className="flex items-center justify-between px-4 py-3"
+        className="flex items-center justify-between px-3.5 py-2.5 sm:px-4"
         style={{ borderTop: '1px solid rgba(45,212,191,0.12)', background: 'rgba(46,229,157,0.04)' }}
       >
         <div className="flex items-center gap-2">
@@ -226,16 +233,16 @@ export function JourneyPanel() {
             ))}
           </div>
           <GithubIcon className="size-3.5" style={{ color: '#9FB0C3' }} />
-          <p className="text-[11px] font-medium" style={{ color: '#9FB0C3' }}>
+          <p className="text-[10.5px] font-medium sm:text-[11px]" style={{ color: '#9FB0C3' }}>
             Join{' '}
-            <span style={{ color: '#FFFFFF' }}>{participantCount}</span>{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>{participantCountStr}</span>{' '}
             developers contributing this month.
           </p>
         </div>
         <Link
           to="/leaderboard"
           aria-label="View leaderboard"
-          className="grid size-7 shrink-0 place-items-center rounded-full transition"
+          className="grid size-6.5 shrink-0 place-items-center rounded-full transition hover:scale-105 sm:size-7"
           style={{
             background: '#2EE59D',
             color: '#050B14',

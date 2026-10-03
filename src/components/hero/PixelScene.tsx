@@ -22,7 +22,7 @@ export function PixelScene() {
           fetchPriority="high"
           width={1812}
           height={868}
-          className="h-full w-full object-cover object-[center_70%] [image-rendering:pixelated]"
+          className="h-full w-full object-cover object-[22%_100%] [image-rendering:pixelated]"
         />
       </picture>
 
