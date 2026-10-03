@@ -100,7 +100,7 @@ export default function About() {
           <div className="space-y-6">
             <TerminalWindow
               typed={false}
-              title="about · gfg-hacktober"
+              title="about · geekstober"
               lines={[
                 { kind: 'command', text: 'cat manifest.md' },
                 { kind: 'output', text: `event: ${SITE_CONFIG.name}` },

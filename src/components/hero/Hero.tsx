@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/BrandIcons'
 import { SITE_CONFIG } from '@/config/site'
 import { PixelScene } from '@/components/hero/PixelScene'
