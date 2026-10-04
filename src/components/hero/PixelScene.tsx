@@ -13,27 +13,31 @@ export function PixelScene() {
       style={{ zIndex: 0 }}
     >
       {/* ── Background WebP Artwork ── */}
-      <picture className="absolute inset-0 block h-full w-full">
-        <source media="(max-width: 1280px)" srcSet="/hero-bg-mobile.webp" />
-        <img
-          src="/hero-bg.webp"
-          alt=""
-          aria-hidden="true"
-          fetchPriority="high"
-          width={1812}
-          height={868}
-          className="h-full w-full object-cover object-[22%_100%] [image-rendering:pixelated]"
-        />
-      </picture>
+<picture className="absolute inset-0 block h-full w-full">
+  <source
+    media="(max-width: 1280px)"
+    srcSet="/mobile_ui.png"
+  />
 
-      {/* ── Top overlay for floating navbar contrast ── */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#050B14]/90 via-[#050B14]/40 to-transparent" />
+  <img
+    src="/main_ui_bg.png"
+    alt=""
+    aria-hidden="true"
+    fetchPriority="high"
+    width={1812}
+    height={868}
+    className="h-full w-full object-cover object-[22%_100%] [image-rendering:pixelated]"
+  />
+</picture>
 
-      {/* ── Left contrast overlay for text readability ── */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050B14]/95 via-[#050B14]/70 to-transparent lg:w-[65%]" />
+{/* Top overlay for navbar contrast */}
+<div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#050B14]/55 via-[#050B14]/20 to-transparent" />
 
-      {/* ── Bottom fade overlay into page background ── */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#050B14] via-[#050B14]/65 to-transparent" />
+{/* Left contrast overlay for text readability */}
+<div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#050B14]/55 via-[#050B14]/25 to-transparent lg:w-[65%]" />
+
+{/* Bottom fade into page background */}
+<div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#050B14]/85 via-[#050B14]/35 to-transparent" />
     </div>
   )
 }

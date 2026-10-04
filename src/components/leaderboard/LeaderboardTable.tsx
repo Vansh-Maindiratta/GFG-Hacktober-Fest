@@ -57,7 +57,7 @@ export function LeaderboardTable({ entries, highlightUserId }: LeaderboardTableP
               <Link
                 to={`/profile/${entry.user.username}`}
                 className={cn(
-                  'grid grid-cols-[52px_1fr_auto] items-center gap-3 border-b border-line px-4 py-3.5 transition last:border-0 hover:bg-brand/[0.06] lg:grid-cols-[76px_1fr_120px_110px_100px_84px] lg:gap-4 lg:px-5',
+  'grid grid-cols-[46px_minmax(0,1fr)_auto] items-center gap-2 border-b border-line px-3 py-3.5 transition last:border-0 hover:bg-brand/[0.06] sm:grid-cols-[52px_minmax(0,1fr)_auto] sm:gap-3 sm:px-4 lg:grid-cols-[76px_1fr_120px_110px_100px_84px] lg:gap-4 lg:px-5',
                   highlighted && 'bg-brand/[0.09] ring-1 ring-inset ring-brand/35',
                 )}
               >
@@ -90,10 +90,12 @@ export function LeaderboardTable({ entries, highlightUserId }: LeaderboardTableP
                         </span>
                       ) : null}
                     </span>
-                    <span className="block truncate font-mono text-[11.5px] text-dim">
-                      @{entry.user.username}
-                      {entry.user.team ? ` · ${entry.user.team}` : ''}
-                    </span>
+            <span className="block truncate font-mono text-[11.5px] text-dim">
+  @{entry.user.username}
+  <span className="hidden sm:inline">
+    {entry.user.team ? ` · ${entry.user.team}` : ''}
+  </span>
+</span>
                   </span>
                 </span>
 

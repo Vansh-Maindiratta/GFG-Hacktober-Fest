@@ -12,16 +12,14 @@ import { JourneyPanel } from '@/components/hero/JourneyPanel'
  */
 export function Hero() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ minHeight: '100svh' }}
-    >
+    <>
+<section className="relative min-h-0 overflow-hidden lg:min-h-[100svh]">
       {/* z-0: Pixel-art scene background (full-bleed, extends behind navbar intentionally) */}
       <PixelScene />
 
       {/* z-10: Content layer — pushed below the floating navbar via --content-top */}
-      <div
-        className="relative mx-auto flex w-[92%] max-w-[1560px] flex-col gap-8 pb-12 lg:flex-row lg:items-start lg:justify-between lg:gap-10"
+    <div
+      className="relative mx-auto flex w-[92%] max-w-[1560px] flex-col gap-8 pb-12 sm:w-[90%]"
         style={{
           zIndex: 10,
           paddingTop: 'var(--content-top)',
@@ -148,12 +146,15 @@ export function Hero() {
             </a>
           </motion.div>
         </div>
-
-        {/* ── Right column: Journey Panel (top aligned with pill top edge) ── */}
-        <div className="shrink-0 lg:pt-0">
-          <JourneyPanel />
-        </div>
       </div>
-    </section>
+     </section>
+
+    {/* Journey panel moved below the hero */}
+<section className="relative z-10 bg-[#050B14] px-4 py-10 sm:px-6 sm:py-12 lg:py-16">
+  <div className="mx-auto flex w-full max-w-[1200px] justify-center">
+    <JourneyPanel />
+  </div>
+</section>
+  </>
   )
 }

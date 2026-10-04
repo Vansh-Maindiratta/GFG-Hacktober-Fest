@@ -54,7 +54,7 @@ export function Navbar({ onSearchOpen }: { onSearchOpen: () => void }) {
       )}
     >
       {/* Floating nav container */}
-      <div className="mx-auto mt-3 flex h-14 w-[92%] max-w-[1560px] items-center gap-3 rounded-xl px-4 sm:px-5"
+      <div className="mx-auto mt-3 flex h-14 w-[94%] max-w-[1560px] items-center gap-2 rounded-xl px-2.5 sm:gap-3 sm:px-5"
         style={{
           background: scrolled
             ? 'rgba(10,20,31,0.92)'

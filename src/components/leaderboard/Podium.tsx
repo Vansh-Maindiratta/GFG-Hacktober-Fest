@@ -35,12 +35,11 @@ export function Podium({ entries }: { entries: LeaderboardEntry[] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex w-1/3 max-w-[220px] flex-col items-center"
+            className="flex min-w-0 flex-1 max-w-[220px] flex-col items-center"
           >
             <div
               className={cn(
-                'relative rounded-xl border px-3 py-4 text-center backdrop-blur-sm transition hover:-translate-y-1',
-                tone.ring,
+                'relative w-full rounded-xl border px-2 py-3 text-center backdrop-blur-sm transition hover:-translate-y-1 sm:px-3 sm:py-4',
               )}
             >
               {place === 1 ? (
@@ -53,7 +52,7 @@ export function Podium({ entries }: { entries: LeaderboardEntry[] }) {
                 {formatCompact(entry.xp)}
                 <span className="ml-1 text-[10px] text-dim">XP</span>
               </p>
-              <p className="font-mono text-[10.5px] text-dim">
+              <p className="font-mono text-[9px] text-dim sm:text-[10.5px]">
                 {entry.mergedPullRequests} PRs · {entry.projectsContributed} projects
               </p>
             </div>

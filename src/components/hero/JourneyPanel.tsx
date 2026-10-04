@@ -96,18 +96,18 @@ export function JourneyPanel() {
     : `${MOCK_USERS.length}+`
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 24 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col overflow-hidden rounded-2xl"
-      style={{
-        width: 'clamp(440px, 28vw, 520px)',
-        background: 'rgba(10,20,31,0.88)',
-        border: '1px solid rgba(45,212,191,0.2)',
-        backdropFilter: 'blur(12px)',
-      }}
-    >
+   <motion.div
+  initial={{ opacity: 0, x: 24 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+  className="mx-auto flex w-full flex-col overflow-hidden rounded-2xl"
+style={{
+  background: 'rgba(5, 11, 20, 0.45)',
+  border: '1px solid rgba(46, 229, 157, 0.25)',
+  backdropFilter: 'blur(14px)',
+  WebkitBackdropFilter: 'blur(14px)',
+}}
+>
       {/* Panel heading */}
       <div
         className="px-4 py-2.5 sm:px-5 sm:py-3"

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ShieldCheck, Sparkles } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/BrandIcons'
 import { useAuth } from '@/contexts/AuthContext'
@@ -21,7 +21,6 @@ export function RequireAuth({
   role?: 'participant' | 'admin'
 }) {
   const { isAuthenticated, role: sessionRole, login } = useAuth()
-  const location = useLocation()
   const [pending, setPending] = useState<'participant' | 'admin' | null>(null)
 
   const authorized = isAuthenticated && (role === 'participant' || sessionRole === 'admin')
@@ -65,7 +64,7 @@ export function RequireAuth({
 
         {/* ── Card: 440px wide, centered ── */}
         <div
-          className="relative z-10 w-full rounded-2xl border border-[rgba(45,212,191,0.28)] bg-[#08121C]/95 text-center backdrop-blur-xl shadow-[0_30px_90px_-30px_rgba(0,255,157,0.22)]"
+          className="relative z-10 w-full rounded-2xl border border-[rgba(45,212,191,0.28)] bg-[#08121C]/20 text-center backdrop-blur-xl shadow-[0_30px_90px_-30px_rgba(0,255,157,0.22)]"
           style={{
             maxWidth: '440px',
             padding: 'clamp(24px, 4vw, 28px)',
@@ -151,11 +150,6 @@ export function RequireAuth({
               <span>Your dashboard, progress tracker and badge showcase</span>
             </div>
           </div>
-
-          {/* Redirect note */}
-          <p className="mt-4 font-mono text-[10px] leading-relaxed text-dim">
-            redirected from <span className="text-mint">{location.pathname}</span>
-          </p>
         </div>
       </div>
     )
